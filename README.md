@@ -9,21 +9,20 @@ Use
 TODO
 
 ```C
-// spar for integer data
-#include "sparInt.c"
+#include "spar.c"
 
 main()
 {
-	// Declare int sparse matrix
+	// Declare sparse 3D matrix of integers
 	sparInt *data;
 
-	// Init size, block size and default value
+	// Init data size, block size and default value
 	data = sparIntInit( 1000, 1000, 1000, 4, 0 );
 
 	// Set element
-	sparIntSet( data, 999, 999, 999, 123456789 );
+	sparIntSet( data, 999, 999, 999, 123456 );
 
-	// Get element
+	// Get elements
 	printf("data(999,999,999) = %d\n", sparIntGet( data, 999, 999, 999 ));
 
 	// Free memory

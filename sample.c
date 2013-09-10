@@ -1,12 +1,11 @@
-// sparMatrix for integer data
-#include "sparInt.c"
+#include "spar.c"
 
 main()
 {
-	// Declare sparse matrix
+	// Declare sparse 3D matrix of integers
 	sparInt *data;
 
-	// Init size, block size and default value
+	// Init data size, block size and default value
 	data = sparIntInit( 1000, 1000, 1000, 4, 0 );
 
 	// Set some elements

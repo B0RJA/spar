@@ -1,8 +1,17 @@
 # Data types
 @ts = ('char', 'int', 'long', 'float', 'double');
 
+open F, '>'.'spar.c';
+foreach $t (@ts)
+{
+	print F '#include "spar'.ucfirst($t).'.c"'."\n";
+}
+print F "\n";
+print F '// Do not edit! Automatically-generated file'."\n";
+close;
+
 # Read template
-open F, 'spar.c';
+open F, 'sparTemplate.c';
 @ls = <F>;
 close F;
 
