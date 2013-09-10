@@ -1,12 +1,11 @@
 sparMatrix
 =================================================
 
-3D sparse matrix implementation in ANSI C
+Implementation of 3D sparse matrix in C
 
 
 Use
 ----------------------
-
 TODO
 
 
