@@ -49,6 +49,7 @@ foreach $t (@ts)
 				$nf = 'spar'.ucfirst($t).$1;
 			}
 			$l =~ s/^$f(\s*\()/$nf.$1/eg;
+			$l =~ s/\"$f(\s+)/'"'.$nf.$1/eg;
 			$l =~ s/(\s+)$f(\s*\()/$1.$nf.$2/eg;
 		}
 		print F $l;

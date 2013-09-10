@@ -22,14 +22,14 @@ sparInt* sparIntInit( int nx, int ny, int nz, int bs, int def )
 	// Check matrix size
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
 	{
-		fprintf(stderr, "sparInit error: Matrix size must be positive\n");
+		fprintf(stderr, "sparIntInit error: Matrix size must be positive\n");
 		exit(1);
 	}
 
 	// Check block size
 	if( !( bs > 1 ) )
 	{
-		fprintf(stderr, "sparInit error: Block size must be greater than 1\n");
+		fprintf(stderr, "sparIntInit error: Block size must be greater than 1\n");
 		exit(1);
 	}
 
@@ -39,7 +39,7 @@ sparInt* sparIntInit( int nx, int ny, int nz, int bs, int def )
 
 	if( matrix == NULL )
 	{
-	   fprintf(stderr, "sparInit error: Out of memory\n");
+	   fprintf(stderr, "sparIntInit error: Out of memory\n");
 	   exit(1);
 	}
 
@@ -65,7 +65,7 @@ sparInt* sparIntInit( int nx, int ny, int nz, int bs, int def )
 
 	if( matrix->blockValue == NULL )
 	{
-	   fprintf(stderr, "sparInit error: Out of memory\n");
+	   fprintf(stderr, "sparIntInit error: Out of memory\n");
 	   exit(1);
 	}
 
@@ -74,7 +74,7 @@ sparInt* sparIntInit( int nx, int ny, int nz, int bs, int def )
 
 	if( matrix->blockData == NULL )
 	{
-	   fprintf(stderr, "sparInit error: Out of memory\n");
+	   fprintf(stderr, "sparIntInit error: Out of memory\n");
 	   exit(1);
 	}
 
@@ -296,7 +296,7 @@ void sparIntSet( sparInt *matrix, int x, int y, int z, int value )
 
 			if( blockData == NULL )
 			{
-			   fprintf(stderr, "sparSet error: Out of memory\n");
+			   fprintf(stderr, "sparIntSet error: Out of memory\n");
 			   exit(1);
 			}
 
@@ -390,7 +390,7 @@ sparInt* sparIntDuplicate( sparInt *matrix )
 
 			if( matrix2->blockData[i] == NULL )
 			{
-			   fprintf(stderr, "sparDuplicate error: Out of memory\n");
+			   fprintf(stderr, "sparIntDuplicate error: Out of memory\n");
 			   exit(1);
 			}
 
@@ -576,7 +576,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 	// Check matrix size
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
 	{
-		fprintf(stderr, "sparResize error: Matrix size must be positive\n");
+		fprintf(stderr, "sparIntResize error: Matrix size must be positive\n");
 		exit(1);
 	}
 
@@ -613,7 +613,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 
 		if( blockValue == NULL || blockData == NULL )
 		{
-		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   fprintf(stderr, "sparIntResize error: Out of memory\n");
 		   exit(1);
 		}
 
@@ -688,7 +688,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 
 		if( blockValue == NULL || blockData == NULL )
 		{
-		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   fprintf(stderr, "sparIntResize error: Out of memory\n");
 		   exit(1);
 		}
 
@@ -747,7 +747,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 
 		if( blockValue == NULL || blockData == NULL )
 		{
-		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   fprintf(stderr, "sparIntResize error: Out of memory\n");
 		   exit(1);
 		}
 
@@ -822,7 +822,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 
 		if( blockValue == NULL || blockData == NULL )
 		{
-		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   fprintf(stderr, "sparIntResize error: Out of memory\n");
 		   exit(1);
 		}
 
@@ -881,7 +881,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 
 		if( blockValue == NULL || blockData == NULL )
 		{
-		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   fprintf(stderr, "sparIntResize error: Out of memory\n");
 		   exit(1);
 		}
 
@@ -956,7 +956,7 @@ void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 
 		if( blockValue == NULL || blockData == NULL )
 		{
-		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   fprintf(stderr, "sparIntResize error: Out of memory\n");
 		   exit(1);
 		}
 
