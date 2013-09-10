@@ -4,4 +4,5 @@
 #include "sparFloat.h"
 #include "sparDouble.h"
 
-// Do not edit! Automatically-generated file
+// Do not edit!
+// Automatically-generated file

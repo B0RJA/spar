@@ -7,7 +7,7 @@ foreach $t (@ts)
 	print F '#include "spar'.ucfirst($t).'.h"'."\n";
 }
 print F "\n";
-print F '// Do not edit! Automatically-generated file'."\n";
+print F '// Do not edit!'."\n".'// Automatically-generated file'."\n";
 close;
 
 # Read template
@@ -38,7 +38,7 @@ foreach $t (@ts)
 			@ls = ();
 		}
 		$l =~ s/\/\/\s*Arbitrary data type\s*[\r\n]*//g;
-		$l =~ s/\#define\s+sparType.*/\/\/ Do not edit\! Automatically\-generated file/g;
+		$l =~ s/\#define\s+sparType.*/\/\/ Do not edit\!\n\/\/ Automatically\-generated file from sparTemplate.h/g;
 		$l =~ s/sparType/$t/g;
 		$l =~ s/spar([\s\*\)])/'spar'.ucfirst($t).$1/eg;
 		$l =~ s/(\}\s*spar)(\;)/$1.ucfirst($t).$2/eg;

@@ -23,19 +23,25 @@ spar* sparInit( int nx, int ny, int nz, int bs, sparType def )
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
 	{
 		fprintf(stderr, "sparInit error: Matrix size must be positive\n");
-		return NULL;
+		exit(1);
 	}
 
 	// Check block size
 	if( !( bs > 1 ) )
 	{
 		fprintf(stderr, "sparInit error: Block size must be greater than 1\n");
-		return NULL;
+		exit(1);
 	}
 
 	// Declare struct and allocate space
 	spar *matrix;
 	matrix = (spar*) malloc(sizeof(spar));
+
+	if( matrix == NULL )
+	{
+	   fprintf(stderr, "sparInit error: Out of memory\n");
+	   exit(1);
+	}
 
 	// Set matrix size (nx,ny,nz)
 	matrix->nx = nx;
@@ -57,8 +63,20 @@ spar* sparInit( int nx, int ny, int nz, int bs, sparType def )
 	// Allocate space for block uniform data
 	matrix->blockValue = (sparType*) calloc( blocks, sizeof(sparType) );
 
+	if( matrix->blockValue == NULL )
+	{
+	   fprintf(stderr, "sparInit error: Out of memory\n");
+	   exit(1);
+	}
+
 	// Allocate space for block heterogeneous data arrays
 	matrix->blockData = (sparType**) calloc( blocks, sizeof(sparType*) );
+
+	if( matrix->blockData == NULL )
+	{
+	   fprintf(stderr, "sparInit error: Out of memory\n");
+	   exit(1);
+	}
 
 	// Set default value
 	matrix->def = def;
@@ -276,6 +294,12 @@ void sparSet( spar *matrix, int x, int y, int z, sparType value )
 			blockData = (sparType*) calloc( bs3, sizeof(sparType) );
 			matrix->blockData[n] = blockData;
 
+			if( blockData == NULL )
+			{
+			   fprintf(stderr, "sparSet error: Out of memory\n");
+			   exit(1);
+			}
+
 			// Set previous value
 			int i;
 			for( i = 0 ; i < bs3 ; i++ )
@@ -363,6 +387,12 @@ spar* sparDuplicate( spar *matrix )
 		{
 			// Allocate space for block data
 			matrix2->blockData[i] = (sparType*) calloc( matrix2->bs3, sizeof(sparType) );
+
+			if( matrix2->blockData[i] == NULL )
+			{
+			   fprintf(stderr, "sparDuplicate error: Out of memory\n");
+			   exit(1);
+			}
 
 			// Copy block data
 			memcpy( matrix2->blockData[i], matrix->blockData[i], matrix2->bs3 * sizeof(sparType) );
@@ -547,7 +577,7 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
 	{
 		fprintf(stderr, "sparResize error: Matrix size must be positive\n");
-		return;
+		exit(1);
 	}
 
 	// Block size
@@ -580,6 +610,12 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 		blocks = mx * my * mz;
 		blockValue = (sparType*) calloc( blocks, sizeof(sparType) ); // Sets to 0s
 		blockData = (sparType**) calloc( blocks, sizeof(sparType*) ); // Sets to NULLs
+
+		if( blockValue == NULL || blockData == NULL )
+		{
+		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   exit(1);
+		}
 
 		// Copy existing blocks
 		for( k = 0 ; k < mz ; k++ )
@@ -650,6 +686,12 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 		blockValue = (sparType*) calloc( blocks, sizeof(sparType) ); // Sets to 0s
 		blockData = (sparType**) calloc( blocks, sizeof(sparType*) ); // Sets to NULLs
 
+		if( blockValue == NULL || blockData == NULL )
+		{
+		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   exit(1);
+		}
+
 		// Copy existing blocks
 		for( k = 0 ; k < mz ; k++ )
 		{
@@ -702,6 +744,12 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 		blocks = mx * my * mz;
 		blockValue = (sparType*) calloc( blocks, sizeof(sparType) ); // Sets to 0s
 		blockData = (sparType**) calloc( blocks, sizeof(sparType*) ); // Sets to NULLs
+
+		if( blockValue == NULL || blockData == NULL )
+		{
+		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   exit(1);
+		}
 
 		// Copy existing blocks
 		for( k = 0 ; k < mz ; k++ )
@@ -772,6 +820,12 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 		blockValue = (sparType*) calloc( blocks, sizeof(sparType) ); // Sets to 0s
 		blockData = (sparType**) calloc( blocks, sizeof(sparType*) ); // Sets to NULLs
 
+		if( blockValue == NULL || blockData == NULL )
+		{
+		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   exit(1);
+		}
+
 		// Copy existing blocks
 		for( k = 0 ; k < mz ; k++ )
 		{
@@ -824,6 +878,12 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 		blocks = mx * my * mz;
 		blockValue = (sparType*) calloc( blocks, sizeof(sparType) ); // Sets to 0s
 		blockData = (sparType**) calloc( blocks, sizeof(sparType*) ); // Sets to NULLs
+
+		if( blockValue == NULL || blockData == NULL )
+		{
+		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   exit(1);
+		}
 
 		// Copy existing blocks
 		for( k = 0 ; k < matrix->mz ; k++ )
@@ -893,6 +953,12 @@ void sparResize( spar *matrix, int nx, int ny, int nz )
 		blocks = mx * my * mz;
 		blockValue = (sparType*) calloc( blocks, sizeof(sparType) ); // Sets to 0s
 		blockData = (sparType**) calloc( blocks, sizeof(sparType*) ); // Sets to NULLs
+
+		if( blockValue == NULL || blockData == NULL )
+		{
+		   fprintf(stderr, "sparResize error: Out of memory\n");
+		   exit(1);
+		}
 
 		// Copy existing blocks
 		for( k = 0 ; k < mz ; k++ )
