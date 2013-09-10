@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 // Do not edit! Automatically-generated file
 
 // Matrix struct
