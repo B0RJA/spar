@@ -8,6 +8,27 @@ Use
 ----------------------
 TODO
 
+```C
+#include "sparInt.c"
+
+main()
+{
+	// Declare int sparse matrix
+	sparIntMatrix *data;
+
+	// Init size, block size and default value
+	data = sparIntInit( 1000, 1000, 1000, 4, 0 );
+
+	// Set element
+	sparIntSet( data, 999, 999, 999, 123456789 );
+
+	// Get element
+	printf("data(999,999,999) = %d\n", sparIntGet( data, 999, 999, 999 ));
+
+	// Free memory
+	sparIntFree( data );
+}
+```
 
 Contribute
 ----------------------
