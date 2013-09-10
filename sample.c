@@ -1,4 +1,4 @@
-// sparMatrix for int data
+// sparMatrix for integer data
 #include "sparInt.c"
 
 main()
