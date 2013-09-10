@@ -22,7 +22,7 @@ main()
 	// Set element
 	sparIntSet( data, 999, 999, 999, 123456 );
 
-	// Get elements
+	// Get element
 	printf("data(999,999,999) = %d\n", sparIntGet( data, 999, 999, 999 ));
 
 	// Free memory
