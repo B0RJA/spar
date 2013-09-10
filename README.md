@@ -9,6 +9,7 @@ Use
 TODO
 
 ```C
+// Example for integer matrix
 #include "sparInt.c"
 
 main()
