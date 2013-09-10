@@ -1,11 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 // sparMatrix for int data
 #include "sparInt.c"
 
-// main
-int main()
+main()
 {
 	// Declare sparse matrix
 	sparIntMatrix *data;
@@ -24,6 +20,4 @@ int main()
 
 	// Free memory
 	sparIntFree( data );
-
-	return 0;
 }
