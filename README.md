@@ -1,7 +1,7 @@
-sparMatrix
+ spar
 =================================================
 
-Implementation of 3D sparse matrix in C
+3D sparse matrix implementation in C
 
 
 Use
