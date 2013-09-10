@@ -9,7 +9,7 @@ close F;
 # Read functions
 foreach $l (@ls)
 {
-	if( $l =~ /^\s*(void|int|double|sparType|sparMatrix)\s*\*?\s*(spar[^\(]*?)\s*\(/ )
+	if( $l =~ /^\s*(void|int|double|sparType|spar)\s*\*?\s*(spar[^\(]*?)\s*\(/ )
 	{
 		$f = $2;
 		push(@fs, $2);
@@ -31,7 +31,8 @@ foreach $t (@ts)
 		$l =~ s/\/\/\s*Arbitrary data type\s*[\r\n]*//g;
 		$l =~ s/\#define\s+sparType.*/\/\/ Do not edit\! Automatically\-generated file/g;
 		$l =~ s/sparType/$t/g;
-		$l =~ s/sparMatrix/'spar'.ucfirst($t).'Matrix'/eg;
+		$l =~ s/spar([\s\*\)])/'spar'.ucfirst($t).$1/eg;
+		$l =~ s/(\}\s*spar)(\;)/$1.ucfirst($t).$2/eg;
 		foreach $f (@fs)
 		{
 			if( $f =~ /^spar(.*)$/ )

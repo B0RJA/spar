@@ -4,7 +4,7 @@
 main()
 {
 	// Declare sparse matrix
-	sparIntMatrix *data;
+	sparInt *data;
 
 	// Init size, block size and default value
 	data = sparIntInit( 1000, 1000, 1000, 4, 0 );

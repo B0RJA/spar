@@ -5,7 +5,7 @@
 // Do not edit! Automatically-generated file
 
 // Matrix struct
-typedef struct sparIntMatrix
+typedef struct sparInt
 {
 	int nx, ny, nz;       // Matrix size (nx,ny,nz)
 	int bs, bs3;          // Block size (bs,bs,bs)
@@ -13,10 +13,10 @@ typedef struct sparIntMatrix
 	int *blockValue; // Uniform block data
 	int **blockData; // Heterogeneous block data
 	int def;         // Default value
-} sparIntMatrix;
+} sparInt;
 
 // Matrix constructor
-sparIntMatrix* sparIntInit( int nx, int ny, int nz, int bs, int def )
+sparInt* sparIntInit( int nx, int ny, int nz, int bs, int def )
 {
 	// Check matrix size
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
@@ -33,8 +33,8 @@ sparIntMatrix* sparIntInit( int nx, int ny, int nz, int bs, int def )
 	}
 
 	// Declare struct and allocate space
-	sparIntMatrix *matrix;
-	matrix = (sparIntMatrix*) malloc(sizeof(sparIntMatrix));
+	sparInt *matrix;
+	matrix = (sparInt*) malloc(sizeof(sparInt));
 
 	// Set matrix size (nx,ny,nz)
 	matrix->nx = nx;
@@ -75,7 +75,7 @@ sparIntMatrix* sparIntInit( int nx, int ny, int nz, int bs, int def )
 }
 
 // Matrix destructor
-void sparIntFree( sparIntMatrix *matrix )
+void sparIntFree( sparInt *matrix )
 {
 	// Number of blocks
 	int blocks;
@@ -102,7 +102,7 @@ void sparIntFree( sparIntMatrix *matrix )
 }
 
 // Reset matrix values
-void sparIntReset( sparIntMatrix *matrix )
+void sparIntReset( sparInt *matrix )
 {
 	// Number of blocks
 	int blocks;
@@ -123,7 +123,7 @@ void sparIntReset( sparIntMatrix *matrix )
 }
 
 // Get matrix memory usage in bytes
-double sparIntMemory( sparIntMatrix *matrix )
+double sparIntMemory( sparInt *matrix )
 {
 	// Number of blocks
 	int blocks;
@@ -131,7 +131,7 @@ double sparIntMemory( sparIntMatrix *matrix )
 
 	// Matrix instance
 	double size;
-	size = (double)( sizeof(sparIntMatrix) );
+	size = (double)( sizeof(sparInt) );
 
 	// Uniform block data
 	size = size + (double)( blocks * sizeof(int) );
@@ -154,7 +154,7 @@ double sparIntMemory( sparIntMatrix *matrix )
 }
 
 // Check if block is uniform
-int sparIntUniformBlock( sparIntMatrix *matrix, int x, int y, int z )
+int sparIntUniformBlock( sparInt *matrix, int x, int y, int z )
 {
 	// Block size
 	int bs, bs3;
@@ -234,7 +234,7 @@ int sparIntUniformBlock( sparIntMatrix *matrix, int x, int y, int z )
 }
 
 // Set matrix element (x,y,z)
-void sparIntSet( sparIntMatrix *matrix, int x, int y, int z, int value )
+void sparIntSet( sparInt *matrix, int x, int y, int z, int value )
 {
 	// Block size
 	int bs, bs3;
@@ -304,7 +304,7 @@ void sparIntSet( sparIntMatrix *matrix, int x, int y, int z, int value )
 }
 
 // Get matrix element (x,y,z)
-int sparIntGet( sparIntMatrix *matrix, int x, int y, int z )
+int sparIntGet( sparInt *matrix, int x, int y, int z )
 {
 	// Block size
 	int bs;
@@ -342,10 +342,10 @@ int sparIntGet( sparIntMatrix *matrix, int x, int y, int z )
 }
 
 // Duplicate matrix
-sparIntMatrix* sparIntDuplicate( sparIntMatrix *matrix )
+sparInt* sparIntDuplicate( sparInt *matrix )
 {
 	// Declare matrix and init
-	sparIntMatrix *matrix2;
+	sparInt *matrix2;
 	matrix2 = sparIntInit( matrix->nx, matrix->ny, matrix->nz,
 						matrix->bs, matrix->def );
 
@@ -378,7 +378,7 @@ sparIntMatrix* sparIntDuplicate( sparIntMatrix *matrix )
 }
 
 // Get matrix memory usage in bytes under certain block size
-double sparIntMemoryBs( sparIntMatrix *matrix, int bs )
+double sparIntMemoryBs( sparInt *matrix, int bs )
 {
 	if( bs == matrix->bs )
 	{
@@ -407,7 +407,7 @@ double sparIntMemoryBs( sparIntMatrix *matrix, int bs )
 
 	// Size of matrix instance
 	double size;
-	size = (double)( sizeof(sparIntMatrix) );
+	size = (double)( sizeof(sparInt) );
 
 	// Size of uniform block data
 	size = size + (double)( blocks * sizeof(int) );
@@ -461,7 +461,7 @@ double sparIntMemoryBs( sparIntMatrix *matrix, int bs )
 }
 
 // Change matrix block size
-void sparIntChangeBs( sparIntMatrix *matrix, int bs )
+void sparIntChangeBs( sparInt *matrix, int bs )
 {
 	// Matrix size (nx,ny,nz)
 	int nx, ny, nz;
@@ -474,7 +474,7 @@ void sparIntChangeBs( sparIntMatrix *matrix, int bs )
 	def = matrix->def;
 
 	// Declare temporal matrix and init
-	sparIntMatrix *matrix2;
+	sparInt *matrix2;
 	matrix2 = sparIntInit( nx, ny, nz, bs, def );
 
 	// Copy values and clear original matrix
@@ -514,7 +514,7 @@ void sparIntChangeBs( sparIntMatrix *matrix, int bs )
 }
 
 // Optimize matrix block size
-void sparIntOptimizeBs( sparIntMatrix *matrix )
+void sparIntOptimizeBs( sparInt *matrix )
 {
 	// Test block size and store optimal
 	int bestBs;
@@ -540,7 +540,7 @@ void sparIntOptimizeBs( sparIntMatrix *matrix )
 }
 
 // Resize matrix
-void sparIntResize( sparIntMatrix *matrix, int nx, int ny, int nz )
+void sparIntResize( sparInt *matrix, int nx, int ny, int nz )
 {
 	// Check matrix size
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )

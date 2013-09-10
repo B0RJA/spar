@@ -5,7 +5,7 @@
 // Do not edit! Automatically-generated file
 
 // Matrix struct
-typedef struct sparLongMatrix
+typedef struct sparLong
 {
 	int nx, ny, nz;       // Matrix size (nx,ny,nz)
 	int bs, bs3;          // Block size (bs,bs,bs)
@@ -13,10 +13,10 @@ typedef struct sparLongMatrix
 	long *blockValue; // Uniform block data
 	long **blockData; // Heterogeneous block data
 	long def;         // Default value
-} sparLongMatrix;
+} sparLong;
 
 // Matrix constructor
-sparLongMatrix* sparLongInit( int nx, int ny, int nz, int bs, long def )
+sparLong* sparLongInit( int nx, int ny, int nz, int bs, long def )
 {
 	// Check matrix size
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
@@ -33,8 +33,8 @@ sparLongMatrix* sparLongInit( int nx, int ny, int nz, int bs, long def )
 	}
 
 	// Declare struct and allocate space
-	sparLongMatrix *matrix;
-	matrix = (sparLongMatrix*) malloc(sizeof(sparLongMatrix));
+	sparLong *matrix;
+	matrix = (sparLong*) malloc(sizeof(sparLong));
 
 	// Set matrix size (nx,ny,nz)
 	matrix->nx = nx;
@@ -75,7 +75,7 @@ sparLongMatrix* sparLongInit( int nx, int ny, int nz, int bs, long def )
 }
 
 // Matrix destructor
-void sparLongFree( sparLongMatrix *matrix )
+void sparLongFree( sparLong *matrix )
 {
 	// Number of blocks
 	int blocks;
@@ -102,7 +102,7 @@ void sparLongFree( sparLongMatrix *matrix )
 }
 
 // Reset matrix values
-void sparLongReset( sparLongMatrix *matrix )
+void sparLongReset( sparLong *matrix )
 {
 	// Number of blocks
 	int blocks;
@@ -123,7 +123,7 @@ void sparLongReset( sparLongMatrix *matrix )
 }
 
 // Get matrix memory usage in bytes
-double sparLongMemory( sparLongMatrix *matrix )
+double sparLongMemory( sparLong *matrix )
 {
 	// Number of blocks
 	int blocks;
@@ -131,7 +131,7 @@ double sparLongMemory( sparLongMatrix *matrix )
 
 	// Matrix instance
 	double size;
-	size = (double)( sizeof(sparLongMatrix) );
+	size = (double)( sizeof(sparLong) );
 
 	// Uniform block data
 	size = size + (double)( blocks * sizeof(long) );
@@ -154,7 +154,7 @@ double sparLongMemory( sparLongMatrix *matrix )
 }
 
 // Check if block is uniform
-int sparLongUniformBlock( sparLongMatrix *matrix, int x, int y, int z )
+int sparLongUniformBlock( sparLong *matrix, int x, int y, int z )
 {
 	// Block size
 	int bs, bs3;
@@ -234,7 +234,7 @@ int sparLongUniformBlock( sparLongMatrix *matrix, int x, int y, int z )
 }
 
 // Set matrix element (x,y,z)
-void sparLongSet( sparLongMatrix *matrix, int x, int y, int z, long value )
+void sparLongSet( sparLong *matrix, int x, int y, int z, long value )
 {
 	// Block size
 	int bs, bs3;
@@ -304,7 +304,7 @@ void sparLongSet( sparLongMatrix *matrix, int x, int y, int z, long value )
 }
 
 // Get matrix element (x,y,z)
-long sparLongGet( sparLongMatrix *matrix, int x, int y, int z )
+long sparLongGet( sparLong *matrix, int x, int y, int z )
 {
 	// Block size
 	int bs;
@@ -342,10 +342,10 @@ long sparLongGet( sparLongMatrix *matrix, int x, int y, int z )
 }
 
 // Duplicate matrix
-sparLongMatrix* sparLongDuplicate( sparLongMatrix *matrix )
+sparLong* sparLongDuplicate( sparLong *matrix )
 {
 	// Declare matrix and init
-	sparLongMatrix *matrix2;
+	sparLong *matrix2;
 	matrix2 = sparLongInit( matrix->nx, matrix->ny, matrix->nz,
 						matrix->bs, matrix->def );
 
@@ -378,7 +378,7 @@ sparLongMatrix* sparLongDuplicate( sparLongMatrix *matrix )
 }
 
 // Get matrix memory usage in bytes under certain block size
-double sparLongMemoryBs( sparLongMatrix *matrix, int bs )
+double sparLongMemoryBs( sparLong *matrix, int bs )
 {
 	if( bs == matrix->bs )
 	{
@@ -407,7 +407,7 @@ double sparLongMemoryBs( sparLongMatrix *matrix, int bs )
 
 	// Size of matrix instance
 	double size;
-	size = (double)( sizeof(sparLongMatrix) );
+	size = (double)( sizeof(sparLong) );
 
 	// Size of uniform block data
 	size = size + (double)( blocks * sizeof(long) );
@@ -461,7 +461,7 @@ double sparLongMemoryBs( sparLongMatrix *matrix, int bs )
 }
 
 // Change matrix block size
-void sparLongChangeBs( sparLongMatrix *matrix, int bs )
+void sparLongChangeBs( sparLong *matrix, int bs )
 {
 	// Matrix size (nx,ny,nz)
 	int nx, ny, nz;
@@ -474,7 +474,7 @@ void sparLongChangeBs( sparLongMatrix *matrix, int bs )
 	def = matrix->def;
 
 	// Declare temporal matrix and init
-	sparLongMatrix *matrix2;
+	sparLong *matrix2;
 	matrix2 = sparLongInit( nx, ny, nz, bs, def );
 
 	// Copy values and clear original matrix
@@ -514,7 +514,7 @@ void sparLongChangeBs( sparLongMatrix *matrix, int bs )
 }
 
 // Optimize matrix block size
-void sparLongOptimizeBs( sparLongMatrix *matrix )
+void sparLongOptimizeBs( sparLong *matrix )
 {
 	// Test block size and store optimal
 	int bestBs;
@@ -540,7 +540,7 @@ void sparLongOptimizeBs( sparLongMatrix *matrix )
 }
 
 // Resize matrix
-void sparLongResize( sparLongMatrix *matrix, int nx, int ny, int nz )
+void sparLongResize( sparLong *matrix, int nx, int ny, int nz )
 {
 	// Check matrix size
 	if( !( nx > 0 && ny > 0 && nz > 0 ) )
