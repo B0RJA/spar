@@ -9,7 +9,7 @@ Use
 TODO
 
 ```C
-#include "spar.c"
+#include "spar.h"
 
 main()
 {

@@ -1,17 +1,17 @@
 # Data types
 @ts = ('char', 'int', 'long', 'float', 'double');
 
-open F, '>'.'spar.c';
+open F, '>'.'spar.h';
 foreach $t (@ts)
 {
-	print F '#include "spar'.ucfirst($t).'.c"'."\n";
+	print F '#include "spar'.ucfirst($t).'.h"'."\n";
 }
 print F "\n";
 print F '// Do not edit! Automatically-generated file'."\n";
 close;
 
 # Read template
-open F, 'sparTemplate.c';
+open F, 'sparTemplate.h';
 @ls = <F>;
 close F;
 
@@ -27,7 +27,7 @@ foreach $l (@ls)
 
 foreach $t (@ts)
 {
-	$fn = 'spar'.ucfirst($t).'.c';
+	$fn = 'spar'.ucfirst($t).'.h';
 	open F, '>'.$fn;
 	foreach my $l2 (@ls)
 	{

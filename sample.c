@@ -1,4 +1,4 @@
-#include "spar.c"
+#include "spar.h"
 
 main()
 {
