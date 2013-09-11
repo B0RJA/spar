@@ -7,7 +7,7 @@ open F, 'sparTemplate.h';
 close F;
 
 # Print template headers
-open G, '>'.'spar.h';
+open G, '>'.'../spar.h';
 foreach $l (@ls)
 {
 	if( $l =~ /^\s*\#include/ )
