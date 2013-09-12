@@ -6,29 +6,16 @@ main()
 	sparInt *data;
 
 	// Init data size, block size and default value
-	data = sparIntInit( 100, 100, 100, 4, 0 );
+	data = sparIntInit( 1000, 1000, 1000, 4, 0 );
 
 	// Set element
-	sparIntSet( data, 99, 99, 99, 123456 );
+	sparIntSet( data, 999, 999, 999, 123456 );
 	
 	// Get element
-	printf("data(99,99,99) = %d\n", sparIntGet( data, 99, 99, 99 ));
+	printf("data(999,999,999) = %d\n", sparIntGet( data, 999, 999, 999 ));
 
 	// Memory usage
-	printf("Memory use of data() = %.1fMB\n", sparIntMemory( data ) / 1024. / 1024. );
-
-	// Resize
-	//sparIntResize( data, 200, 200, 200 );
-
-	// Change block size
-	//sparIntChangeBs( data, 8 );
-
-	// Optimize block size
-	//sparIntOptimizeBs( data );
-	
-	// Duplicate
-	//sparInt *data2;
-	//data2 = sparIntDuplicate( data );
+	printf("Memory usage of data() = %.1fMB\n", sparIntMemory( data ) / 1024. / 1024. );
 
 	// Free memory
 	sparIntFree( data );

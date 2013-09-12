@@ -1,12 +1,11 @@
  spar
 =================================================
 
-3D sparse matrix implementation in C
+3D sparse matrix implementation desgined for fast memory read/write. Data is divided in blocks and compressed if the block is uniform. Maximum compression ratio using blocks of (4x4x4) elements is 32x with about 50M read/write access per seconds.
 
 
 Use
 ----------------------
-TODO
 
 ```C
 #include "spar.h"
@@ -15,47 +14,48 @@ main()
 {
 	// Declare sparse 3D integer matrix
 	sparInt *data;
+	// Accepted data types: char int long float double
 
 	// Init data size, block size and default value
-	data = sparIntInit( 100, 100, 100, 4, 0 );
+	data = sparIntInit( 1000, 1000, 1000, 4, 0 );
 
 	// Set element
-	sparIntSet( data, 99, 99, 99, 123456 );
+	sparIntSet( data, 999, 999, 999, 123456 );
 	
 	// Get element
-	printf("data(99,99,99) = %d\n", sparIntGet( data, 99, 99, 99 ));
+	printf("data(999,999,999) = %d\n", sparIntGet( data, 999, 999, 999 ));
 
 	// Memory usage
-	printf("Memory use of data() = %.1fMB\n", sparIntMemory( data ) / 1024. / 1024. );
+	printf("Memory usage of data() = %.1fMB\n", sparIntMemory( data ) / 1024. / 1024. );
 
 	// Resize
-	//sparIntResize( data, 200, 200, 200 );
+	sparIntResize( data, 2000, 2000, 2000 );
 
 	// Change block size
-	//sparIntChangeBs( data, 8 );
+	sparIntChangeBs( data, 8 );
 
 	// Optimize block size
-	//sparIntOptimizeBs( data );
+	sparIntOptimizeBs( data );
 	
 	// Duplicate
-	//sparInt *data2;
-	//data2 = sparIntDuplicate( data );
+	sparInt *data2;
+	data2 = sparIntDuplicate( data );
 
 	// Free memory
 	sparIntFree( data );
+	sparIntFree( data2 );
 }
 ```
 
 Contribute
 ----------------------
-TODO
 
+The source file `build\sparTemplate.h` is based on an arbitrary data type. Run the script `build\build.pl` to obtain the library, containing the functions for all data types.
 
 
 Any problems?
 -------------
 Feel free to [write an issue](https://github.com/B0RJA/sparMatrix/issues) if you have any questions or problems.
-
 
 
 Copyright and license
