@@ -50,12 +50,12 @@ main()
 Contribute
 ----------------------
 
-The source file `build\sparTemplate.h` is based on an arbitrary data type. Run the script `build\build.pl` to obtain the library containing the functions for all data types.
+The source file `build\sparTemplate.h` is based on an arbitrary data type. Run the script `build\build.pl` to obtain the library functions for all data types.
 
 
 Any problems?
 -------------
-Feel free to [write an issue](https://github.com/B0RJA/sparMatrix/issues) if you have any questions or problems.
+Feel free to [write an issue](https://github.com/B0RJA/spar/issues) if you have any questions or problems.
 
 
 Copyright and license
