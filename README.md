@@ -12,7 +12,7 @@ Use
 
 main()
 {
-	// Declare sparse 3D integer matrix
+	// Declare 3D sparse integer matrix
 	sparInt *data;
 	// Supported data types: char int long float double
 
