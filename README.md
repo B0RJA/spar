@@ -28,11 +28,11 @@ main()
 	// Memory usage
 	printf("Memory usage of data() = %.1fMB\n", sparIntMemory( data ) / 1024. / 1024. );
 
-	// Resize
-	sparIntResize( data, 2000, 2000, 2000 );
-
 	// Change block size
 	sparIntChangeBs( data, 8 );
+	
+	// Resize
+	sparIntResize( data, 2000, 2000, 2000 );
 
 	// Optimize block size
 	sparIntOptimizeBs( data );
