@@ -1,7 +1,7 @@
  spar
 =================================================
 
-3D sparse matrix implementation desgined for fast memory read/write. Data is divided in blocks and compressed if the block is uniform. Maximum compression ratio using blocks of (4x4x4) elements is 32x with about 50M read/write access per seconds.
+spar is 3D sparse matrix implementation desgined for fast memory read/write. Data is divided in blocks and compressed if the block is uniform. Maximum compression ratio using blocks of (4x4x4) elements is 32x with approx 50M read/write access per second.
 
 
 Use
