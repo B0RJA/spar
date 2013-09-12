@@ -1,7 +1,7 @@
  spar
 =================================================
 
-spar is 3D sparse matrix implementation desgined for fast memory read/write. Data is divided in blocks and compressed if the block is uniform. Maximum compression ratio using blocks of (4x4x4) elements is 32x with approx 50M read/write access per second.
+spar is a 3D sparse matrix implementation written in C desgined for fast memory read/write. Data is divided into blocks that are compressed when uniform. This allows the representation of matrices with large uniform aggregates. Maximum compression ratio using blocks of size (4x4x4) is 32x with approx 50M read/write access per second. The following matrix data types are supported: char, int, long, float, double.
 
 
 Use
