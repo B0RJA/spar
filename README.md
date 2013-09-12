@@ -50,7 +50,7 @@ main()
 Contribute
 ----------------------
 
-The source file `build\sparTemplate.h` is based on an arbitrary data type. Run the script `build\build.pl` to obtain the library, containing the functions for all data types.
+The source file `build\sparTemplate.h` is based on an arbitrary data type. Run the script `build\build.pl` to obtain the library containing the functions for all data types.
 
 
 Any problems?
